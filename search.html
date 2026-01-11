@@ -3,9 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>Поиск</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
+    body {
+      font-family: sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background: #2b2b2b;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    header nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
     .search-section {
       max-width: 700px;
       margin: 50px auto;
@@ -43,7 +61,7 @@
       margin-top: 8px;
       max-height: 300px;
       overflow-y: auto;
-      display: none; /* скрываем по умолчанию */
+      display: none;
       z-index: 100;
     }
 
@@ -59,30 +77,36 @@
       background: #f7e7c1;
       color: #2b2b2b;
     }
-
-    #search-results::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    #search-results::-webkit-scrollbar-thumb {
-      background-color: rgba(0,0,0,0.2);
-      border-radius: 4px;
-    }
   </style>
 </head>
 <body>
 
-<header class="top-menu" data-aos="fade-down">
+<header>
   <nav>
     <a href="index.html">Главная</a>
     <a href="authors.html">Авторы</a>
     <a href="search.html">Поиск</a>
-    <a href="register.html">Вход / Регистрация</a>
   </nav>
 </header>
 
 <main>
-  <section class="search-section" data-aos="fade-up">
-    <h1>
+  <section class="search-section">
+    <h1>Поиск по сайту</h1>
+    <div class="search-container">
+      <input type="text" id="search-input" placeholder="Введите ключевое слово...">
+      <div id="search-results"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © Проект переводов латышской литературы
+</footer>
+
+<script>
+  const searchInput = document.getElementById("search-input");
+  const searchResults = document.getElementById("search-results");
+
+  // ВАЖНО: пути для GitHub Pages должны быть относительные от
 
 
