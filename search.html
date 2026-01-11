@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <title>Поиск</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-<header class="top-menu">
+<header class="top-menu" data-aos="fade-down">
   <nav>
     <a href="index.html">Главная</a>
     <a href="authors.html">Авторы</a>
@@ -17,17 +18,58 @@
 </header>
 
 <main>
-  <section>
+  <section data-aos="fade-up">
     <h1>Поиск по сайту</h1>
-    <input type="text" placeholder="Введите ключевое слово..." class="search-input">
-    <p>Функция поиска будет добавлена позже.</p>
+    <input type="text" id="search-input" placeholder="Введите ключевое слово...">
+    <ul id="search-results"></ul>
   </section>
 </main>
 
-<footer>
+<footer data-aos="fade-up">
   <p>© Проект переводов латышской литературы</p>
 </footer>
 
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+<!-- Поиск -->
+<script>
+  const searchInput = document.getElementById("search-input");
+  const searchResults = document.getElementById("search-results");
+
+  // Данные сайта для поиска
+  const siteData = [
+    { title: "Тень смерти", author: "Rūdolfs Blaumanis", link: "works/naves-ena.html" },
+    { title: "Иней весной", author: "Rūdolfs Blaumanis", link: "works/salna-pavasari.html" },
+    { title: "Rūdolfs Blaumanis", author: "", link: "authors/blaumanis.html" }
+  ];
+
+  searchInput.addEventListener("input", function() {
+    const query = this.value.toLowerCase();
+    searchResults.innerHTML = "";
+    if(query === "") return;
+
+    const filtered = siteData.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.author.toLowerCase().includes(query)
+    );
+
+    filtered.forEach(item => {
+      const li = document.createElement("li");
+      li.innerHTML = `<a href="${item.link}">${item.title}${item.author ? " — " + item.author : ""}</a>`;
+      searchResults.appendChild(li);
+    });
+
+    if(filtered.length === 0) {
+      searchResults.innerHTML = "<li>Ничего не найдено</li>";
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
