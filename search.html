@@ -5,71 +5,59 @@
   <title>Поиск</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body>
-
-<header class="top-menu" data-aos="fade-down">
-  <nav>
-    <a href="index.html">Главная</a>
-    <a href="authors.html">Авторы</a>
-    <a href="search.html">Поиск</a>
-    <a href="register.html">Вход / Регистрация</a>
-  </nav>
-</header>
-
-<main>
-  <section data-aos="fade-up">
-    <h1>Поиск по сайту</h1>
-    <input type="text" id="search-input" placeholder="Введите ключевое слово...">
-    <ul id="search-results"></ul>
-  </section>
-</main>
-
-<footer data-aos="fade-up">
-  <p>© Проект переводов латышской литературы</p>
-</footer>
-
-<!-- AOS -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-</script>
-
-<!-- Поиск -->
-<script>
-  const searchInput = document.getElementById("search-input");
-  const searchResults = document.getElementById("search-results");
-
-  // Данные сайта для поиска
-  const siteData = [
-    { title: "Тень смерти", author: "Rūdolfs Blaumanis", link: "works/naves-ena.html" },
-    { title: "Иней весной", author: "Rūdolfs Blaumanis", link: "works/salna-pavasari.html" },
-    { title: "Rūdolfs Blaumanis", author: "", link: "authors/blaumanis.html" }
-  ];
-
-  searchInput.addEventListener("input", function() {
-    const query = this.value.toLowerCase();
-    searchResults.innerHTML = "";
-    if(query === "") return;
-
-    const filtered = siteData.filter(item =>
-      item.title.toLowerCase().includes(query) ||
-      item.author.toLowerCase().includes(query)
-    );
-
-    filtered.forEach(item => {
-      const li = document.createElement("li");
-      li.innerHTML = `<a href="${item.link}">${item.title}${item.author ? " — " + item.author : ""}</a>`;
-      searchResults.appendChild(li);
-    });
-
-    if(filtered.length === 0) {
-      searchResults.innerHTML = "<li>Ничего не найдено</li>";
+  <style>
+    .search-section {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 0 20px;
     }
-  });
-</script>
 
-</body>
-</html>
+    .search-section h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .search-container {
+      position: relative;
+    }
+
+    #search-input {
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 18px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      outline: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    #search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      margin-top: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+      display: none; /* скрываем по умолчанию */
+      z-index: 100;
+    }
+
+    #search-results a {
+      display: block;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #2b2b2b;
+      transition: 0.2s;
+    }
+
+    #search-results a:hover {
+      background: #f7e7c1;
+      color: #2b2b2b;
+
 
 
