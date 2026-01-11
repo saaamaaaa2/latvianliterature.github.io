@@ -107,6 +107,50 @@
   const searchInput = document.getElementById("search-input");
   const searchResults = document.getElementById("search-results");
 
-  // ВАЖНО: пути для GitHub Pages должны быть относительные от
+  // ВАЖНО: пути для GitHub Pages должны быть относительные от этой страницы
+  const siteData = [
+    { title: "Тень смерти", author: "Rūdolfs Blaumanis", link: "works/naves-ena.html" },
+    { title: "Иней весной", author: "Rūdolfs Blaumanis", link: "works/salna-pavasari.html" },
+    { title: "Rūdolfs Blaumanis", author: "", link: "authors/blaumanis.html" }
+  ];
+
+  searchInput.addEventListener("input", function() {
+    const query = this.value.trim().toLowerCase();
+    searchResults.innerHTML = "";
+
+    if(query === "") {
+      searchResults.style.display = "none";
+      return;
+    }
+
+    const filtered = siteData.filter(item =>
+      item.title.toLowerCase().includes(query) ||
+      item.author.toLowerCase().includes(query)
+    );
+
+    if(filtered.length === 0) {
+      searchResults.innerHTML = `<a href="#">Ничего не найдено</a>`;
+    } else {
+      filtered.forEach(item => {
+        const a = document.createElement("a");
+        a.href = item.link;
+        a.textContent = item.title + (item.author ? " — " + item.author : "");
+        searchResults.appendChild(a);
+      });
+    }
+
+    searchResults.style.display = "block";
+  });
+
+  // Закрыть результаты при клике вне поля
+  document.addEventListener("click", function(e) {
+    if(!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+      searchResults.style.display = "none";
+    }
+  });
+</script>
+
+</body>
+</html>
 
 
