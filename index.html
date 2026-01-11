@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <title>Переводы латышской литературы</title>
   <link rel="stylesheet" href="style.css">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
-<header class="top-menu">
+<header class="top-menu" data-aos="fade-down">
   <nav>
     <a href="index.html">Главная</a>
     <a href="authors.html">Авторы</a>
@@ -17,7 +19,7 @@
 </header>
 
 <main>
-  <section>
+  <section data-aos="fade-up">
     <h1>Переводы латышской литературы</h1>
     <p>
       Этот проект создан для того, чтобы познакомить русскоязычных читателей
@@ -25,7 +27,7 @@
     </p>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Идея проекта</h2>
     <p>
       Латышская литература мало известна за пределами Латвии.
@@ -33,7 +35,7 @@
     </p>
   </section>
 
-  <section>
+  <section data-aos="fade-up">
     <h2>Цель</h2>
     <p>
       Создать открытую онлайн-библиотеку переводов,
@@ -42,9 +44,16 @@
   </section>
 </main>
 
-<footer>
+<footer data-aos="fade-up">
   <p>© Проект переводов латышской литературы</p>
 </footer>
 
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
 </body>
 </html>
+
