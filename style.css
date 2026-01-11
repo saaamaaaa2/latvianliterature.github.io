@@ -134,6 +134,15 @@ footer {
   text-decoration: none;
   color: inherit;
 }
+.text-content {
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+.text-content p {
+  margin-bottom: 20px;
+  text-indent: 30px;
+}
 
 }
 
