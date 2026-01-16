@@ -4,11 +4,84 @@
   <meta charset="UTF-8">
   <title>Rūdolfs Blaumanis</title>
   <link rel="stylesheet" href="../style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    .author-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 40px;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #5b1a1a, #111);
+      color: white;
+      margin: 40px auto;
+      max-width: 1000px;
+    }
+
+    .author-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #ccc;
+      flex-shrink: 0;
+    }
+
+    .author-info h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .author-info p {
+      margin: 6px 0;
+      opacity: 0.9;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin: 30px auto;
+      max-width: 1000px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 10px 18px;
+      background: #eee;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .tab.active {
+      background: #444;
+      color: white;
+    }
+
+    .author-content {
+      max-width: 1000px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+    }
+
+    .author-content h2 {
+      margin-top: 40px;
+    }
+
+    .works-list a {
+      display: block;
+      margin: 8px 0;
+      color: #5b1a1a;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .works-list a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<header class="top-menu" data-aos="fade-down">
+<header class="top-menu">
   <nav>
     <a href="../index.html">Главная</a>
     <a href="../authors.html">Авторы</a>
@@ -17,47 +90,49 @@
   </nav>
 </header>
 
-<main>
-  <section data-aos="fade-up">
+<!-- Шапка автора -->
+<div class="author-header">
+  <div class="author-photo"></div>
+  <div class="author-info">
     <h1>Rūdolfs Blaumanis</h1>
-    <p>
-      Рудольф Блауманис (1863–1908) — один из выдающихся латышских писателей, чьи произведения, особенно проза и драматургия, мастерски и многогранно отражают социальный и психологический портрет общества на рубеже XIX–XX веков. В своей творческой деятельности Блауманис уделял внимание укреплению национального самосознания латышей, их экономическим и духовным устремлениям, а также тщательно исследовал индивидуальность своих героев, их внутренние переживания и сделанный выбор.
+    <p>Годы жизни: 1863 – 1908</p>
+    <p>Страна: Латвия</p>
+    <p>Жанры: проза, драма, новеллы</p>
+  </div>
+</div>
 
-Творчество Блауманиса охватывает период с 1882 по 1908 годы. В это время он создал произведения, которые снискали широкое признание и остаются актуальными и читаемыми до XXI века. Его литературное наследие отличается тонким психологизмом, глубоким изображением социальных условий того времени и многогранным портретом латышского общества, затрагивая при этом важные экзистенциальные вопросы.
+<!-- Вкладки -->
+<div class="tabs">
+  <div class="tab active">О писателе</div>
+  <div class="tab">Произведения</div>
+  <div class="tab">Переводы</div>
+</div>
 
-Рудольф Блауманис работал на пересечении двух культур — немецкой и латышской. Первые его произведения были написаны на немецком языке, однако позднее писатель полностью обратился к латышскому слову, создав ряд текстов, ставших классикой латышской литературы и включённых в культурный канон Латвии. Его произведения многократно ставились в театрах, а по мотивам некоторых из них сняты игровые фильмы.
-    </p>
-  </section>
+<!-- Контент -->
+<div class="author-content">
+  <h2>О писателе</h2>
+  <p>
+    Rūdolfs Blaumanis — латышский писатель, драматург и поэт, один из классиков латышской литературы.
+    Известен своими психологическими рассказами, пьесами и новеллами, в которых он описывал
+    жизнь латышского народа конца XIX – начала XX века.
+  </p>
 
-  <section data-aos="fade-up">
-    <h2>Произведения на сайте</h2>
-    <div class="card-grid">
-      <div class="card" data-aos="zoom-in">
-        <a href="../works/naves-ena.html">
-          <h3>Тень смерти</h3>
-          <p>Оригинал: Nāves ēna</p>
-        </a>
-      </div>
+  <h2>Биография</h2>
+  <p>
+    Родился в 1863 году. Получил образование в Риге. Работал журналистом, писал рассказы,
+    пьесы и стихи. Его произведения до сих пор входят в школьную программу Латвии.
+  </p>
 
-      <div class="card" data-aos="zoom-in">
-        <a href="../works/salna-pavasari.html">
-          <h3>Иней весной</h3>
-          <p>Оригинал: Salna pavasarī</p>
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
+  <h2>Переводы на сайте</h2>
+  <div class="works-list">
+    <a href="../works/naves-ena.html">Тень смерти (Nāves ēna)</a>
+    <a href="../works/salna-pavasari.html">Иней весной (Salna pavasarī)</a>
+  </div>
+</div>
 
-<footer data-aos="fade-up">
+<footer>
   <p>© Проект переводов латышской литературы</p>
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration: 1000, once: true });
-</script>
-
 </body>
 </html>
-
