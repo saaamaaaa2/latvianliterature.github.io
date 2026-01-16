@@ -162,73 +162,7 @@ a {
 }
 
 
-    .books-slider-wrapper {
-  position: relative;
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.books-slider {
-  display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 10px 0;
-}
-
-.books-slider::-webkit-scrollbar {
-  display: none;
-}
-
-.slider-book {
-  min-width: 120px;
-  text-align: center;
-  text-decoration: none;
-  color: #222;
-  transition: 0.2s;
-}
-
-.slider-book img {
-  width: 120px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-}
-
-.slider-book p {
-  margin-top: 8px;
-  font-size: 14px;
-}
-
-.slider-book:hover {
-  transform: translateY(-4px);
-}
-
-.slider-btn {
-  background: #444;
-  color: white;
-  border: none;
-  font-size: 26px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.slider-btn:hover {
-  background: #000;
-}
-
-.slider-btn.left {
-  margin-right: 10px;
-}
-
-.slider-btn.right {
-  margin-left: 10px;
-}
+ 
 
   </style>
 </head>
@@ -281,25 +215,7 @@ a {
     </p>
     <h2>Известные произведения</h2>
 
-<div class="books-slider-wrapper">
-  <button class="slider-btn left" onclick="scrollBooks(-1)">‹</button>
 
-  <div class="books-slider" id="booksSlider">
-    <a href="../works/naves-ena.html" class="slider-book">
-      <img src="../images/naves-ena.jpg" alt="Тень смерти">
-      <p>Тень смерти</p>
-    </a>
-
-    <a href="../works/salna-pavasari.html" class="slider-book">
-      <img src="../images/salna-pavasari.jpg" alt="Иней весной">
-      <p>Иней весной</p>
-    </a>
-
-    <!-- можно добавлять дальше -->
-  </div>
-
-  <button class="slider-btn right" onclick="scrollBooks(1)">›</button>
-</div>
 
   </div>
 
@@ -366,13 +282,6 @@ a {
 
 
 
-  <script>
-function scrollBooks(direction) {
-  const slider = document.getElementById("booksSlider");
-  const scrollAmount = 200;
-  slider.scrollLeft += direction * scrollAmount;
-}
-</script>
-
+ 
 </body>
 </html>
