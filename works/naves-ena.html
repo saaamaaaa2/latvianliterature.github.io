@@ -14,12 +14,13 @@
   border-radius: 20px;
   padding: 30px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  align-items: center;   /* аккуратное вертикальное выравнивание */
+  align-items: flex-start;   /* как в том варианте */
 }
 
 .book-info {
-  display: block;       /* убираем flex */
+  flex: 1;   /* просто занимает место, без растягивания */
 }
+
 
 .book-cover {
   width: 200px;
