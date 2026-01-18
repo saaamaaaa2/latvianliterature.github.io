@@ -142,6 +142,66 @@
 .pagination button:hover {
   background: #666;
 }
+
+
+
+    .heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.hero-card {
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero-card:hover {
+  transform: translateY(-5px);
+}
+
+.hero-photo {
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  background: #ccc;   /* потом заменишь на фон с фото */
+  margin-bottom: 8px;
+}
+
+.hero-card p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.hero-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.hero-modal.active {
+  display: flex;
+}
+
+.hero-modal-content {
+  background: white;
+  border-radius: 20px;
+  max-width: 500px;
+  padding: 30px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.95);}
+  to {opacity: 1; transform: scale(1);}
+}
+
   </style>
 </head>
 <body>
@@ -188,15 +248,45 @@
     <p>Наиболее значимые поворотные моменты сюжета происходят в конце новеллы Сначала мимо льдины проходит корабль, и его дымок появляется, а затем равнодушно исчезает вдалеке. Мгновение спустя, когда надежды на спасение уже кажутся утрачены, к несчастным мужчинам подходит чужая лодка, однако оказывается, что места в ней хватает не на всех, и три рыбака вынуждены остаться и наблюдать, как остальные уплывают. </p>
   </div>
 
-  <div class="card">
-    <h2>Главные герои</h2>
-    <p>Грюнталь(Grīntāls) – энергичный и организованный лидер группы, принимает важные решения, распределяет пищу, проводит жребий для посадки в лодку. Заботится о выживании группы, проявляет ответственность и самоотверженность.</p>
-    <p>Биркенбаум(Birkenbaums) – смелый, опытный и практичный молодой человек. Помогает Карлу и остальным выживать, проявляет заботу, выдержку и решимость в экстремальных условиях.</p>
-    <p>Карл(Kārlēns) – 16 летний подросток, страдает от голода и холода, ищет защиту и поддержку у Биркенбаума. Эмоционально ранимый, переживает свою молодую жизнь и страх смерти.</p>
-  <p>Зальга(Zaļga) – эгоистичный рыболов, заботится только о своей собственности и собственной выгоде. Подчиняется требованиям группы только под давлением.</p>
-    <p>Старый Далде(Vecais Dalda) – старик, отец Яна, проявляет мудрость и заботу о сыне, готов к самопожертвованию ради его спасения.</p>
-    <p>Ян Далде(Janis Dalda) – сын Далде, молодой и упрямый, эмоционально привязан к отцу, сначала сопротивляется спасению через жребий, но в итоге уступает. </p>
+
+
+  
+ <div class="card">
+  <h2>Главные герои</h2>
+
+  <div class="heroes-grid">
+    <div class="hero-card" onclick="openHero('grintals')">
+      <div class="hero-photo"></div>
+      <p>Гринталс</p>
+    </div>
+
+    <div class="hero-card" onclick="openHero('birkenbaums')">
+      <div class="hero-photo"></div>
+      <p>Биркенбаумс</p>
+    </div>
+
+    <div class="hero-card" onclick="openHero('karlens')">
+      <div class="hero-photo"></div>
+      <p>Карл</p>
+    </div>
+
+    <div class="hero-card" onclick="openHero('zalga')">
+      <div class="hero-photo"></div>
+      <p>Залга</p>
+    </div>
+
+    <div class="hero-card" onclick="openHero('dalda')">
+      <div class="hero-photo"></div>
+      <p>Старый Далда</p>
+    </div>
+
+    <div class="hero-card" onclick="openHero('janis')">
+      <div class="hero-photo"></div>
+      <p>Ян Далда</p>
+    </div>
   </div>
+</div>
+
 
   <div class="card">
     <h2>Влияние и значение в литературе и обществе</h2>
@@ -609,6 +699,64 @@ function prevPage() {
 }
 
 splitText();
+</script>
+
+
+
+
+
+
+
+  <div id="heroModal" class="hero-modal" onclick="closeHero()">
+  <div class="hero-modal-content" onclick="event.stopPropagation()">
+    <h3 id="heroTitle"></h3>
+    <p id="heroText"></p>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <script>
+const heroes = {
+  grintals: {
+    name: "Гринталс",
+    text: "Энергичный и организованный лидер группы, принимает важные решения, распределяет пищу, проводит жребий для посадки в лодку. Заботится о выживании группы, проявляет ответственность и самоотверженность."
+  },
+  birkenbaums: {
+    name: "Биркенбаумс",
+    text: "Смелый, опытный и практичный молодой человек. Помогает Карлу и остальным выживать, проявляет заботу, выдержку и решимость."
+  },
+  karlens: {
+    name: "Карл",
+    text: "16-летний подросток, страдает от голода и холода, ищет защиту у Биркенбаумса. Эмоционально ранимый, боится смерти."
+  },
+  zalga: {
+    name: "Залга",
+    text: "Эгоистичный рыбак, заботится только о своей выгоде. Подчиняется группе лишь под давлением."
+  },
+  dalda: {
+    name: "Старый Далда",
+    text: "Старик, отец Яна. Проявляет мудрость и заботу, готов к самопожертвованию."
+  },
+  janis: {
+    name: "Ян Далда",
+    text: "Сын Далды. Молодой и упрямый, эмоционально привязан к отцу, сначала сопротивляется спасению, но уступает."
+  }
+};
+
+function openHero(id) {
+  document.getElementById("heroTitle").innerText = heroes[id].name;
+  document.getElementById("heroText").innerText = heroes[id].text;
+  document.getElementById("heroModal").classList.add("active");
+}
+
+function closeHero() {
+  document.getElementById("heroModal").classList.remove("active");
+}
 </script>
 
 </body>
