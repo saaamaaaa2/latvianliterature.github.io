@@ -119,6 +119,29 @@
   margin-left: 20px;
   font-style: italic;
 }
+
+
+
+    .pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+}
+
+.pagination button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #444;
+  color: white;
+  cursor: pointer;
+}
+
+.pagination button:hover {
+  background: #666;
+}
   </style>
 </head>
 <body>
@@ -185,6 +208,7 @@
   <div class="card">
     <h2>Текст произведения</h2>
     <div class="book-text">
+      <div id="rawText" style="display:none;">
       <p><em>Здесь будет размещён текст перевода.</em></p>
       <p>Все еще дул юго-западный ветер и громадная льдина плыла все дальше и дальше в море. На льдине находились четырнадцать рыбаков и две лошади. Рыбаки были заняты рубкой прорубей и спусканием в воду сетей, и никто из них не заметил, как лед стал отдаляться от берега. Только, когда спастись больше не было возможности, они обратили внимание на случившееся несчастье: лошадь чего-то побежала к берегу, Карл, шестнадцатилетний мальчик, погнался на второй лошади за нею и настиг ее, как раз на таком расстоянии от берега, откуда можно было видеть, что лед отделился. Мальчик стремглав понесся назад и сообщил товарищам о случившемся, но, когда те все сбежались на край льдины, доплыть до берега больше не было надежды.</p>
 
@@ -521,7 +545,15 @@
 <p class="dialog">-- Прощай, сын! Прощай, сын! -- крикнул ему вслед старик и, когда лодка медленно стала удаляться, тихо повторил: -- Прощай, сын! Прощай, сын!</p>
 
 <p>Грюнталь, раза три попрощавшись, помахал шапкой, обвил затем рукою шею Карла и остался неподвижно стоять. Далде стоял немного наклонившись вперед, точно окоченелый. Так они еще долго были видны Яну и Биркенбауму, которые не сводили с них глаз. Затем их силуэты стали неясными, слились и наконец вся льдина виднелась на горизонте в виде маленькой, сероватой точки. Затем исчезла и она.</p>
+ </div>
+       <div id="pageText" class="book-text"></div>
 
+    <div class="pagination">
+      <button onclick="prevPage()">Назад</button>
+      <span id="pageInfo"></span>
+      <button onclick="nextPage()">Вперёд</button>
+    </div>
+  </div>
     </div>
   </div>
 </div>
@@ -537,6 +569,46 @@
     document.getElementById(id).classList.add('active');
     event.target.classList.add('active');
   }
+</script>
+
+
+
+
+  <script>
+const CHARS_PER_PAGE = 1500; // можешь менять: 1000, 2000 и т.д.
+
+let pages = [];
+let currentPage = 0;
+
+function splitText() {
+  const text = document.getElementById("rawText").innerText.trim();
+  for (let i = 0; i < text.length; i += CHARS_PER_PAGE) {
+    pages.push(text.slice(i, i + CHARS_PER_PAGE));
+  }
+  showPage(0);
+}
+
+function showPage(index) {
+  if (index < 0 || index >= pages.length) return;
+  currentPage = index;
+  document.getElementById("pageText").innerText = pages[index];
+  document.getElementById("pageInfo").innerText =
+    `Страница ${currentPage + 1} из ${pages.length}`;
+}
+
+function nextPage() {
+  if (currentPage < pages.length - 1) {
+    showPage(currentPage + 1);
+  }
+}
+
+function prevPage() {
+  if (currentPage > 0) {
+    showPage(currentPage - 1);
+  }
+}
+
+splitText();
 </script>
 
 </body>
