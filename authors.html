@@ -6,64 +6,80 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <style>
+<style>
 
-/* Заголовок */
+/* ===== Заголовок ===== */
 h1 {
   margin-bottom: 20px;
 }
 
-/* Панель сортировки */
-.alphabet-bar {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.alphabet-bar button {
-  padding: 8px 18px;
-  border-radius: 20px;
-  border: none;
+/* ===== Кнопка открытия фильтра ===== */
+.filter-toggle {
   background: #444;
   color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
   cursor: pointer;
+  display: inline-block;
+  margin-bottom: 20px;
   transition: 0.3s;
 }
 
-.alphabet-bar button:hover {
+.filter-toggle:hover {
   background: #666;
 }
 
-/* Алфавит */
-.letters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+/* ===== Панель фильтра ===== */
+.filter-panel {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
   margin-bottom: 30px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  display: none;
+  animation: fadeIn 0.3s ease;
 }
 
-.letters span {
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 10px;
+.filter-panel.active {
+  display: block;
+}
+
+.filter-group {
+  margin-bottom: 20px;
+}
+
+.filter-group h4 {
+  margin: 0 0 10px 0;
+}
+
+.filter-group button,
+.filter-group select,
+.filter-group input {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-group button {
   background: #eee;
-  font-size: 14px;
+  cursor: pointer;
   transition: 0.2s;
 }
 
-.letters span:hover {
+.filter-group button:hover {
   background: #ddd;
 }
 
-/* Список авторов */
-.authors-list {
+/* ===== Список авторов ===== */
+#authorsList {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Карточка автора */
+/* ===== Карточка автора ===== */
 .author-card {
   display: flex;
   justify-content: space-between;
@@ -91,7 +107,7 @@ h1 {
   color: #666;
 }
 
-/* Фото */
+/* Фото справа */
 .author-photo {
   width: 110px;
   height: 110px;
@@ -107,7 +123,12 @@ h1 {
   object-fit: cover;
 }
 
-  </style>
+@keyframes fadeIn {
+  from {opacity: 0; transform: scale(0.98);}
+  to {opacity: 1; transform: scale(1);}
+}
+
+</style>
 </head>
 <body>
 
@@ -124,23 +145,55 @@ h1 {
   <section data-aos="fade-up">
     <h1>Авторы</h1>
 
-    <!-- Сортировка -->
-    <div class="alphabet-bar">
-      <button onclick="sortAuthors('az')">А–Я</button>
-      <button onclick="sortAuthors('za')">Я–А</button>
-      <button onclick="filterLetter('all')">Все</button>
+    <!-- КНОПКА ФИЛЬТРА -->
+    <div class="filter-toggle" onclick="toggleFilters()">
+      Фильтр и сортировка
     </div>
 
-    <!-- Буквы -->
-    <div class="letters" id="letters"></div>
+    <!-- ПАНЕЛЬ -->
+    <div id="filterPanel" class="filter-panel">
 
-    <!-- Список -->
-    <div id="authorsList" class="authors-list">
+      <div class="filter-group">
+        <h4>Сортировка</h4>
+        <button onclick="sortAuthors('az')">А–Я</button>
+        <button onclick="sortAuthors('za')">Я–А</button>
+      </div>
 
-      <a href="authors/blaumanis.html" 
-         class="author-card" 
-         data-name="Blaumanis"
+      <div class="filter-group">
+        <h4>Поиск по имени</h4>
+        <input type="text" id="searchInput" 
+               placeholder="Введите имя..." 
+               oninput="applyFilters()">
+      </div>
+
+      <div class="filter-group">
+        <h4>Первая буква</h4>
+        <select id="letterFilter" onchange="applyFilters()">
+          <option value="all">Все</option>
+          <option value="B">B</option>
+          <option value="V">V</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <h4>Жанр</h4>
+        <select id="genreFilter" onchange="applyFilters()">
+          <option value="all">Все</option>
+          <option value="Реализм">Реализм</option>
+          <option value="Социальная лирика">Социальная лирика</option>
+        </select>
+      </div>
+
+    </div>
+
+    <!-- СПИСОК АВТОРОВ -->
+    <div id="authorsList">
+
+      <a href="authors/blaumanis.html"
+         class="author-card"
+         data-name="Rūdolfs Blaumanis"
          data-letter="B"
+         data-genre="Реализм"
          data-aos="zoom-in">
 
         <div class="author-info">
@@ -154,10 +207,11 @@ h1 {
       </a>
 
 
-      <a href="authors/Veidenbaums.html" 
-         class="author-card" 
-         data-name="Veidenbaums"
+      <a href="authors/Veidenbaums.html"
+         class="author-card"
+         data-name="Eduards Veidenbaums"
          data-letter="V"
+         data-genre="Социальная лирика"
          data-aos="zoom-in">
 
         <div class="author-info">
@@ -183,7 +237,11 @@ h1 {
 <script>
 AOS.init({ duration: 1000, once: true });
 
-/* Сортировка */
+function toggleFilters() {
+  document.getElementById("filterPanel")
+          .classList.toggle("active");
+}
+
 function sortAuthors(type) {
   const list = document.getElementById("authorsList");
   const cards = Array.from(list.children);
@@ -199,27 +257,27 @@ function sortAuthors(type) {
   cards.forEach(card => list.appendChild(card));
 }
 
-/* Алфавит */
-const lettersContainer = document.getElementById("letters");
-const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+function applyFilters() {
+  const search = document.getElementById("searchInput").value.toLowerCase();
+  const letter = document.getElementById("letterFilter").value;
+  const genre = document.getElementById("genreFilter").value;
 
-alphabet.forEach(letter => {
-  const span = document.createElement("span");
-  span.textContent = letter;
-  span.onclick = () => filterLetter(letter);
-  lettersContainer.appendChild(span);
-});
+  document.querySelectorAll(".author-card").forEach(card => {
 
-function filterLetter(letter) {
-  const cards = document.querySelectorAll(".author-card");
+    const name = card.dataset.name.toLowerCase();
+    const cardLetter = card.dataset.letter;
+    const cardGenre = card.dataset.genre;
 
-  cards.forEach(card => {
-    if (letter === "all") {
+    const matchSearch = name.includes(search);
+    const matchLetter = letter === "all" || cardLetter === letter;
+    const matchGenre = genre === "all" || cardGenre === genre;
+
+    if (matchSearch && matchLetter && matchGenre) {
       card.style.display = "flex";
     } else {
-      card.style.display =
-        card.dataset.letter === letter ? "flex" : "none";
+      card.style.display = "none";
     }
+
   });
 }
 </script>
