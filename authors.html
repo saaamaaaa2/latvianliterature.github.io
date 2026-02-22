@@ -5,6 +5,109 @@
   <title>Авторы</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+
+/* Заголовок */
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Панель сортировки */
+.alphabet-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.alphabet-bar button {
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: none;
+  background: #444;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.alphabet-bar button:hover {
+  background: #666;
+}
+
+/* Алфавит */
+.letters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.letters span {
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #eee;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.letters span:hover {
+  background: #ddd;
+}
+
+/* Список авторов */
+.authors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Карточка автора */
+.author-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.author-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.author-info h3 {
+  margin: 0 0 8px 0;
+}
+
+.author-info p {
+  margin: 0;
+  color: #666;
+}
+
+/* Фото */
+.author-photo {
+  width: 110px;
+  height: 110px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #ddd;
+  flex-shrink: 0;
+}
+
+.author-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  </style>
 </head>
 <body>
 
@@ -20,22 +123,55 @@
 <main>
   <section data-aos="fade-up">
     <h1>Авторы</h1>
-    <div class="card-grid">
-      <div class="card" data-aos="zoom-in">
-        <a href="authors/blaumanis.html">
+
+    <!-- Сортировка -->
+    <div class="alphabet-bar">
+      <button onclick="sortAuthors('az')">А–Я</button>
+      <button onclick="sortAuthors('za')">Я–А</button>
+      <button onclick="filterLetter('all')">Все</button>
+    </div>
+
+    <!-- Буквы -->
+    <div class="letters" id="letters"></div>
+
+    <!-- Список -->
+    <div id="authorsList" class="authors-list">
+
+      <a href="authors/blaumanis.html" 
+         class="author-card" 
+         data-name="Blaumanis"
+         data-letter="B"
+         data-aos="zoom-in">
+
+        <div class="author-info">
           <h3>Rūdolfs Blaumanis</h3>
           <p>Реализм, драма, рассказы</p>
-        </a>
-      </div>
+        </div>
+
+        <div class="author-photo">
+          <img src="images/blaumanis.jpg" alt="Blaumanis">
+        </div>
+      </a>
+
+
+      <a href="authors/Veidenbaums.html" 
+         class="author-card" 
+         data-name="Veidenbaums"
+         data-letter="V"
+         data-aos="zoom-in">
+
+        <div class="author-info">
+          <h3>Eduards Veidenbaums</h3>
+          <p>Социальная лирика, сатира</p>
+        </div>
+
+        <div class="author-photo">
+          <img src="images/veidenbaums.jpg" alt="Veidenbaums">
+        </div>
+      </a>
+
     </div>
-    <div class="card-grid">
-      <div class="card" data-aos="zoom-in">
-        <a href="authors/Veidenbaums.html">
-          <h3>Veidenbaums</h3>
-          <p>Реализм, драма, рассказы</p>
-        </a>
-      </div>
-    </div>
+
   </section>
 </main>
 
@@ -45,8 +181,51 @@
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 1000, once: true });
+AOS.init({ duration: 1000, once: true });
+
+/* Сортировка */
+function sortAuthors(type) {
+  const list = document.getElementById("authorsList");
+  const cards = Array.from(list.children);
+
+  cards.sort((a, b) => {
+    const nameA = a.dataset.name.toLowerCase();
+    const nameB = b.dataset.name.toLowerCase();
+    return type === "az"
+      ? nameA.localeCompare(nameB)
+      : nameB.localeCompare(nameA);
+  });
+
+  cards.forEach(card => list.appendChild(card));
+}
+
+/* Алфавит */
+const lettersContainer = document.getElementById("letters");
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+
+alphabet.forEach(letter => {
+  const span = document.createElement("span");
+  span.textContent = letter;
+  span.onclick = () => filterLetter(letter);
+  lettersContainer.appendChild(span);
+});
+
+function filterLetter(letter) {
+  const cards = document.querySelectorAll(".author-card");
+
+  cards.forEach(card => {
+    if (letter === "all") {
+      card.style.display = "flex";
+    } else {
+      card.style.display =
+        card.dataset.letter === letter ? "flex" : "none";
+    }
+  });
+}
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
