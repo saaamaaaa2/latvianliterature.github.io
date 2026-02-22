@@ -182,10 +182,8 @@ h1 {
       <div class="filter-group">
         <h4>Жанр</h4>
         <select id="genreFilter" onchange="applyFilters()">
-          <option value="all">Все</option>
-          <option value="Реализм">Реализм</option>
-          <option value="Социальная лирика">Социальная лирика</option>
-        </select>
+  <option value="all">Все</option>
+</select>
       </div>
 
     </div>
@@ -261,6 +259,27 @@ function sortAuthors(type) {
   cards.forEach(card => list.appendChild(card));
 }
 
+function normalizeLetter(letter) {
+  const map = {
+    "R": "R", "Р": "R",
+    "A": "A", "А": "A",
+    "B": "B", "В": "B",
+    "E": "E", "Е": "E",
+    "K": "K", "К": "K",
+    "M": "M", "М": "M",
+    "H": "H", "Н": "H",
+    "O": "O", "О": "O",
+    "P": "P", "П": "P",
+    "C": "C", "С": "C",
+    "T": "T", "Т": "T",
+    "Y": "Y", "У": "Y",
+    "X": "X", "Х": "X"
+  };
+
+  return map[letter] || letter;
+}
+
+
 function applyFilters() {
   const search = document.getElementById("searchInput").value.toLowerCase();
   const letter = document.getElementById("letterFilter").value;
@@ -269,11 +288,12 @@ function applyFilters() {
   document.querySelectorAll(".author-card").forEach(card => {
 
     const name = card.dataset.name.toLowerCase();
-    const cardLetter = card.dataset.letter;
+    const cardLetter = normalizeLetter(card.dataset.letter);
+    const selectedLetter = normalizeLetter(letter);
     const cardGenre = card.dataset.genre;
 
     const matchSearch = name.includes(search);
-    const matchLetter = letter === "all" || cardLetter === letter;
+    const matchLetter = letter === "all" || cardLetter === selectedLetter;
     const matchGenre = genre === "all" || cardGenre === genre;
 
     if (matchSearch && matchLetter && matchGenre) {
@@ -284,6 +304,27 @@ function applyFilters() {
 
   });
 }
+
+  // Автоматическое добавление жанров
+function generateGenres() {
+  const genreSet = new Set();
+  const cards = document.querySelectorAll(".author-card");
+
+  cards.forEach(card => {
+    genreSet.add(card.dataset.genre);
+  });
+
+  const genreSelect = document.getElementById("genreFilter");
+
+  genreSet.forEach(genre => {
+    const option = document.createElement("option");
+    option.value = genre;
+    option.textContent = genre;
+    genreSelect.appendChild(option);
+  });
+}
+
+generateGenres();
 </script>
 
 </body>
