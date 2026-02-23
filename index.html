@@ -1,12 +1,167 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Переводы латышской литературы</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Переводы латышской литературы</title>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f4f6fb;
+  color: #1a1a1a;
+}
+
+/* ШАПКА (не меняю структуру) */
+.top-menu {
+  background: #2f3e46;
+  padding: 15px 10%;
+}
+
+.top-menu nav {
+  display: flex;
+  gap: 30px;
+}
+
+.top-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.top-menu a:hover {
+  opacity: 0.7;
+}
+
+/* HERO */
+.hero {
+  padding: 120px 10%;
+  background: linear-gradient(135deg, #2f3e46, #52796f);
+  color: white;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  margin-right: 15px;
+  transition: 0.3s;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: #cad2c5;
+  color: #2f3e46;
+}
+
+.btn-primary:hover {
+  background: white;
+}
+
+.btn-secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #2f3e46;
+}
+
+/* FEATURES */
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px 10%;
+  flex-wrap: wrap;
+}
+
+.feature {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+/* КОНВЕЙЕР КНИГ */
+.books-section {
+  overflow: hidden;
+  padding: 60px 0;
+  background: #ffffff;
+}
+
+.books-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.books-track img {
+  height: 220px;
+  border-radius: 12px;
+  transition: transform 0.3s;
+}
+
+.books-track img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #2f3e46;
+  color: white;
+}
+
+/* АДАПТИВ */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .features {
+    gap: 20px;
+  }
+
+  .books-track img {
+    height: 160px;
+  }
+}
+</style>
 </head>
+
 <body>
 
 <header class="top-menu" data-aos="fade-down">
@@ -19,39 +174,58 @@
 </header>
 
 <main>
-  <h1>Переводы латышской литературы</h1>
-  <section data-aos="fade-up">
-    <h1>Переводы латышской литературы</h1>
-    <p>
-     На нашем сайте вы найдёте переводы классики и современных авторов, короткие рассказы и большие романы, поэзию и эссе. Всё это — бесплатно и в открытом доступе. Мы хотим, чтобы каждая книга становилась маленьким окном в другой мир, а чтение — увлекательным путешествием, где можно мечтать, переживать и удивляться вместе с авторами.
-    </p>
+
+  <!-- HERO -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-text">
+      <h1>Откройте мир латышской литературы</h1>
+      <p>
+        Бесплатная онлайн-библиотека переводов классики и современных авторов.
+        Читайте, вдохновляйтесь и открывайте новые истории.
+      </p>
+      <div class="hero-buttons">
+        <a href="authors.html" class="btn-primary">Смотреть авторов</a>
+        <a href="register.html" class="btn-secondary">Присоединиться</a>
+      </div>
+    </div>
   </section>
 
-  <section data-aos="fade-up">
-    <h2>Идея проекта</h2>
-    <p>
-      Латышская литература — это настоящий кладезь историй, мыслей и эмоций, о которых большинство людей за пределами Латвии даже не подозревают. Наш проект родился из простого желания: сделать эти книги доступными для русскоязычного читателя. Мы хотим, чтобы вы могли открыть для себя новые миры, почувствовать дыхание латышской поэзии и прозы, познакомиться с писателями, о которых раньше не слышали, и просто насладиться красивым словом.
-    </p>
+  <!-- ПРЕИМУЩЕСТВА -->
+  <section class="features" data-aos="fade-up">
+    <div class="feature">📚 Бесплатный доступ</div>
+    <div class="feature">🌍 Классика и современность</div>
+    <div class="feature">✨ Удобное чтение</div>
+    <div class="feature">🖋 Новые переводы</div>
   </section>
 
-  <section data-aos="fade-up">
-    <h2>Цель</h2>
-    <p>
-      Мы создаём бесплатную онлайн-библиотеку переводов латышской литературы. Здесь каждый сможет читать, вдохновляться и узнавать что-то новое — без регистрации, ограничений и сложных инструкций. Наша цель — показать, что литература может быть живой, понятной и близкой каждому. Это пространство для тех, кто любит хорошие истории, яркие образы и настоящие эмоции.
-    </p>
+  <!-- КОНВЕЙЕР -->
+  <section class="books-section">
+    <div class="books-track">
+      <img src="images/book1.jpg">
+      <img src="images/book2.jpg">
+      <img src="images/book3.jpg">
+      <img src="images/book4.jpg">
+      <img src="images/book5.jpg">
+
+      <!-- Дублируем для бесконечности -->
+      <img src="images/book1.jpg">
+      <img src="images/book2.jpg">
+      <img src="images/book3.jpg">
+      <img src="images/book4.jpg">
+      <img src="images/book5.jpg">
+    </div>
   </section>
+
 </main>
 
 <footer data-aos="fade-up">
   <p>© Проект переводов латышской литературы</p>
 </footer>
 
-<!-- AOS JS -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 1000, once: true });
+AOS.init({ duration: 1000, once: true });
 </script>
 
 </body>
 </html>
-
