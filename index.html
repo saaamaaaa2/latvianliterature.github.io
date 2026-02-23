@@ -10,39 +10,84 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background: #f4f6fb;
+  color: #1a1a1a;
 }
 
-/* HERO (без изменения цветовой гаммы) */
+/* ШАПКА (не меняю структуру) */
+.top-menu {
+  background: #2f3e46;
+  padding: 15px 10%;
+}
+
+.top-menu nav {
+  display: flex;
+  gap: 30px;
+}
+
+.top-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.top-menu a:hover {
+  opacity: 0.7;
+}
+
+/* HERO */
 .hero {
-  padding: 100px 10%;
+  padding: 120px 10%;
+  background: linear-gradient(135deg, #2f3e46, #52796f);
+  color: white;
+}
+
+.hero-text {
+  max-width: 600px;
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 48px;
   margin-bottom: 20px;
 }
 
 .hero p {
   font-size: 18px;
-  max-width: 600px;
-  line-height: 1.6;
+  opacity: 0.9;
 }
 
 .hero-buttons {
-  margin-top: 25px;
+  margin-top: 30px;
 }
 
-.hero-buttons a {
-  padding: 10px 22px;
-  border-radius: 25px;
+.btn-primary,
+.btn-secondary {
+  padding: 12px 25px;
+  border-radius: 30px;
   text-decoration: none;
   margin-right: 15px;
-  border: 1px solid currentColor;
   transition: 0.3s;
+  display: inline-block;
 }
 
-.hero-buttons a:hover {
-  opacity: 0.7;
+.btn-primary {
+  background: #cad2c5;
+  color: #2f3e46;
+}
+
+.btn-primary:hover {
+  background: white;
+}
+
+.btn-secondary {
+  border: 2px solid white;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: white;
+  color: #2f3e46;
 }
 
 /* FEATURES */
@@ -55,13 +100,15 @@ body {
 }
 
 .feature {
-  font-size: 17px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 /* КОНВЕЙЕР КНИГ */
 .books-section {
   overflow: hidden;
   padding: 60px 0;
+  background: #ffffff;
 }
 
 .books-track {
@@ -73,7 +120,7 @@ body {
 
 .books-track img {
   height: 220px;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: transform 0.3s;
 }
 
@@ -82,14 +129,35 @@ body {
 }
 
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* адаптив */
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #2f3e46;
+  color: white;
+}
+
+/* АДАПТИВ */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 30px; }
-  .books-track img { height: 160px; }
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .features {
+    gap: 20px;
+  }
+
+  .books-track img {
+    height: 160px;
+  }
 }
 </style>
 </head>
@@ -109,14 +177,16 @@ body {
 
   <!-- HERO -->
   <section class="hero" data-aos="fade-up">
-    <h1>Переводы латышской литературы</h1>
-    <p>
-      Бесплатная онлайн-библиотека переводов классики и современных авторов.
-      Читайте, вдохновляйтесь и открывайте новые истории.
-    </p>
-    <div class="hero-buttons">
-      <a href="authors.html">Смотреть авторов</a>
-      <a href="register.html">Присоединиться</a>
+    <div class="hero-text">
+      <h1>Откройте мир латышской литературы</h1>
+      <p>
+        Бесплатная онлайн-библиотека переводов классики и современных авторов.
+        Читайте, вдохновляйтесь и открывайте новые истории.
+      </p>
+      <div class="hero-buttons">
+        <a href="authors.html" class="btn-primary">Смотреть авторов</a>
+        <a href="register.html" class="btn-secondary">Присоединиться</a>
+      </div>
     </div>
   </section>
 
@@ -137,7 +207,7 @@ body {
       <img src="images/book4.jpg">
       <img src="images/book5.jpg">
 
-      <!-- дубликат -->
+      <!-- Дублируем для бесконечности -->
       <img src="images/book1.jpg">
       <img src="images/book2.jpg">
       <img src="images/book3.jpg">
@@ -157,7 +227,5 @@ body {
 AOS.init({ duration: 1000, once: true });
 </script>
 
-</body>
-</html>
 </body>
 </html>
