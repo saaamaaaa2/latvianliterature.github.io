@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Авторы</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Авторы</title>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 body {
@@ -14,33 +14,68 @@ body {
   color: #1a1a1a;
 }
 
-/* ===== Заголовок ===== */
-h1 {
-  margin-bottom: 20px;
+/* ===== ШАПКА (точно как на главной) ===== */
+.top-menu {
+  background: #2f3e46;
+  padding: 15px 10%;
 }
 
-/* ===== Кнопка открытия фильтра ===== */
+.top-menu nav {
+  display: flex;
+  gap: 30px;
+}
+
+.top-menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.top-menu a:hover {
+  opacity: 0.7;
+}
+
+/* ===== HERO-ПОЛОСА КАК НА ГЛАВНОЙ ===== */
+.page-hero {
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #2f3e46, #52796f);
+  color: white;
+}
+
+.page-hero h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+/* ===== ОСНОВНОЙ БЛОК ===== */
+main {
+  padding: 60px 10%;
+}
+
+/* ===== КНОПКА ФИЛЬТРА ===== */
 .filter-toggle {
   background: #2f3e46;
   color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
+  padding: 12px 25px;
+  border-radius: 25px;
   cursor: pointer;
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   transition: 0.3s;
 }
 
 .filter-toggle:hover {
   background: #52796f;
+  transform: translateY(-2px);
 }
 
-/* ===== Панель фильтра ===== */
+/* ===== ПАНЕЛЬ ФИЛЬТРА ===== */
 .filter-panel {
   background: white;
   border-radius: 20px;
-  padding: 25px;
-  margin-bottom: 30px;
+  padding: 30px;
+  margin-bottom: 40px;
   box-shadow: 0 8px 25px rgba(47,62,70,0.08);
   display: none;
   animation: fadeIn 0.3s ease;
@@ -52,11 +87,16 @@ h1 {
   flex-wrap: wrap;
 }
 
-/* ===== Группа фильтра ===== */
+/* ===== ГРУППЫ ===== */
 .filter-group {
   display: flex;
   flex-direction: column;
   min-width: 220px;
+}
+
+.filter-group h4 {
+  margin-bottom: 10px;
+  color: #2f3e46;
 }
 
 .filter-group button,
@@ -65,17 +105,16 @@ h1 {
   padding: 8px 12px;
   border-radius: 12px;
   border: 1px solid #cad2c5;
-  margin-right: 10px;
   margin-bottom: 10px;
   font-family: inherit;
 }
 
 .filter-group button {
   background: #cad2c5;
-  cursor: pointer;
-  transition: 0.2s;
   border: none;
   color: #2f3e46;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 .filter-group button:hover {
@@ -83,20 +122,20 @@ h1 {
   color: white;
 }
 
-/* ===== Список авторов ===== */
+/* ===== СПИСОК ===== */
 #authorsList {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 25px;
 }
 
-/* ===== Карточка автора ===== */
+/* ===== КАРТОЧКА ===== */
 .author-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: white;
-  padding: 25px;
+  padding: 30px;
   border-radius: 20px;
   text-decoration: none;
   color: inherit;
@@ -105,8 +144,8 @@ h1 {
 }
 
 .author-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(47,62,70,0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(82,121,111,0.25);
 }
 
 .author-info h3 {
@@ -119,10 +158,10 @@ h1 {
   color: #52796f;
 }
 
-/* ===== Фото ===== */
+/* ===== ФОТО ===== */
 .author-photo {
-  width: 110px;
-  height: 110px;
+  width: 120px;
+  height: 120px;
   border-radius: 20px;
   overflow: hidden;
   background: #cad2c5;
@@ -135,12 +174,34 @@ h1 {
   object-fit: cover;
 }
 
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #2f3e46;
+  color: white;
+}
+
 @keyframes fadeIn {
   from {opacity: 0; transform: scale(0.98);}
   to {opacity: 1; transform: scale(1);}
 }
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+  .author-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .author-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
 </style>
 </head>
+
 <body>
 
 <header class="top-menu" data-aos="fade-down">
@@ -152,94 +213,91 @@ h1 {
   </nav>
 </header>
 
+<section class="page-hero" data-aos="fade-up">
+  <h1>Авторы латышской литературы</h1>
+</section>
+
 <main>
-  <section data-aos="fade-up">
-    <h1>Авторы</h1>
 
-    <!-- КНОПКА ФИЛЬТРА -->
-    <div class="filter-toggle" onclick="toggleFilters()">
-      Фильтр и сортировка
+<div class="filter-toggle" onclick="toggleFilters()">
+  Фильтр и сортировка
+</div>
+
+<div id="filterPanel" class="filter-panel">
+
+  <div class="filter-group">
+    <h4>Сортировка</h4>
+    <button onclick="sortAuthors('az')">А–Я</button>
+    <button onclick="sortAuthors('za')">Я–А</button>
+  </div>
+
+  <div class="filter-group">
+    <h4>Поиск по имени</h4>
+    <input type="text" id="searchInput"
+           placeholder="Введите имя..."
+           oninput="applyFilters()">
+  </div>
+
+  <div class="filter-group">
+    <h4>Первая буква</h4>
+    <select id="letterFilter" onchange="applyFilters()">
+      <option value="all">Все</option>
+      <option value="B">B</option>
+      <option value="V">V</option>
+    </select>
+  </div>
+
+  <div class="filter-group">
+    <h4>Жанр</h4>
+    <select id="genreFilter" onchange="applyFilters()">
+      <option value="all">Все</option>
+    </select>
+  </div>
+
+</div>
+
+<div id="authorsList">
+
+  <a href="authors/blaumanis.html"
+     class="author-card"
+     data-name="Rūdolfs Blaumanis"
+     data-letter="B"
+     data-genre="Реализм"
+     data-aos="zoom-in">
+
+    <div class="author-info">
+      <h3>Rūdolfs Blaumanis</h3>
+      <p>Реализм, драма, рассказы</p>
     </div>
 
-    <!-- ПАНЕЛЬ -->
-    <div id="filterPanel" class="filter-panel">
+    <div class="author-photo">
+      <img src="images/blaumanis.jpg" alt="Blaumanis">
+    </div>
+  </a>
 
-      <div class="filter-group">
-        <h4>Сортировка</h4>
-        <button onclick="sortAuthors('az')">А–Я</button>
-        <button onclick="sortAuthors('za')">Я–А</button>
-      </div>
+  <a href="authors/Veidenbaums.html"
+     class="author-card"
+     data-name="Eduards Veidenbaums"
+     data-letter="V"
+     data-genre="Социальная лирика"
+     data-aos="zoom-in">
 
-      <div class="filter-group">
-        <h4>Поиск по имени</h4>
-        <input type="text" id="searchInput" 
-               placeholder="Введите имя..." 
-               oninput="applyFilters()">
-      </div>
-
-      <div class="filter-group">
-        <h4>Первая буква</h4>
-        <select id="letterFilter" onchange="applyFilters()">
-          <option value="all">Все</option>
-          <option value="B">B</option>
-          <option value="V">V</option>
-        </select>
-      </div>
-
-      <div class="filter-group">
-        <h4>Жанр</h4>
-        <select id="genreFilter" onchange="applyFilters()">
-  <option value="all">Все</option>
-</select>
-      </div>
-
+    <div class="author-info">
+      <h3>Eduards Veidenbaums</h3>
+      <p>Социальная лирика, сатира</p>
     </div>
 
-    <!-- СПИСОК АВТОРОВ -->
-    <div id="authorsList">
-
-      <a href="authors/blaumanis.html"
-         class="author-card"
-         data-name="Rūdolfs Blaumanis"
-         data-letter="B"
-         data-genre="Реализм"
-         data-aos="zoom-in">
-
-        <div class="author-info">
-          <h3>Rūdolfs Blaumanis</h3>
-          <p>Реализм, драма, рассказы</p>
-        </div>
-
-        <div class="author-photo">
-          <img src="images/blaumanis.jpg" alt="Blaumanis">
-        </div>
-      </a>
-
-
-      <a href="authors/Veidenbaums.html"
-         class="author-card"
-         data-name="Eduards Veidenbaums"
-         data-letter="V"
-         data-genre="Социальная лирика"
-         data-aos="zoom-in">
-
-        <div class="author-info">
-          <h3>Eduards Veidenbaums</h3>
-          <p>Социальная лирика, сатира</p>
-        </div>
-
-        <div class="author-photo">
-          <img src="images/veidenbaums.jpg" alt="Veidenbaums">
-        </div>
-      </a>
-
+    <div class="author-photo">
+      <img src="images/veidenbaums.jpg" alt="Veidenbaums">
     </div>
+  </a>
 
-  </section>
+</div>
+
 </main>
 
-<footer data-aos="fade-up">
-  <p>© Проект переводов латышской литературы</p>
+<footer>
+  © Проект переводов латышской литературы
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -267,25 +325,9 @@ function sortAuthors(type) {
 }
 
 function normalizeLetter(letter) {
-  const map = {
-    "R": "R", "Р": "R",
-    "A": "A", "А": "A",
-    "B": "B", "В": "B",
-    "E": "E", "Е": "E",
-    "K": "K", "К": "K",
-    "M": "M", "М": "M",
-    "H": "H", "Н": "H",
-    "O": "O", "О": "O",
-    "P": "P", "П": "P",
-    "C": "C", "С": "C",
-    "T": "T", "Т": "T",
-    "Y": "Y", "У": "Y",
-    "X": "X", "Х": "X"
-  };
-
+  const map = { "B":"B","В":"B","V":"V" };
   return map[letter] || letter;
 }
-
 
 function applyFilters() {
   const search = document.getElementById("searchInput").value.toLowerCase();
@@ -293,7 +335,6 @@ function applyFilters() {
   const genre = document.getElementById("genreFilter").value;
 
   document.querySelectorAll(".author-card").forEach(card => {
-
     const name = card.dataset.name.toLowerCase();
     const cardLetter = normalizeLetter(card.dataset.letter);
     const selectedLetter = normalizeLetter(letter);
@@ -303,26 +344,16 @@ function applyFilters() {
     const matchLetter = letter === "all" || cardLetter === selectedLetter;
     const matchGenre = genre === "all" || cardGenre === genre;
 
-    if (matchSearch && matchLetter && matchGenre) {
-      card.style.display = "flex";
-    } else {
-      card.style.display = "none";
-    }
-
+    card.style.display = (matchSearch && matchLetter && matchGenre) ? "flex" : "none";
   });
 }
 
-  // Автоматическое добавление жанров
 function generateGenres() {
   const genreSet = new Set();
   const cards = document.querySelectorAll(".author-card");
-
-  cards.forEach(card => {
-    genreSet.add(card.dataset.genre);
-  });
+  cards.forEach(card => genreSet.add(card.dataset.genre));
 
   const genreSelect = document.getElementById("genreFilter");
-
   genreSet.forEach(genre => {
     const option = document.createElement("option");
     option.value = genre;
@@ -333,9 +364,6 @@ function generateGenres() {
 
 generateGenres();
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
