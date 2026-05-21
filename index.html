@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Latvian Kids - Learn Fun</title>
+<title>LatvianKids</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
@@ -16,8 +16,8 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
   color: white;
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
   overflow-x: hidden;
 }
 
@@ -25,29 +25,29 @@ body {
 .ball {
   position: absolute;
   border-radius: 50%;
-  opacity: 0.2;
-  animation: float 8s infinite ease-in-out;
-  filter: blur(1px);
+  opacity: 0.18;
+  animation: float 10s infinite ease-in-out;
 }
 
-.b1 { width: 120px; height: 120px; background: white; top: 10%; left: 10%; }
-.b2 { width: 80px; height: 80px; background: #fbbf24; top: 70%; left: 20%; }
-.b3 { width: 160px; height: 160px; background: #34d399; top: 40%; left: 75%; }
-.b4 { width: 100px; height: 100px; background: #f472b6; top: 20%; left: 80%; }
+.b1 { width: 140px; height: 140px; background: white; top: 10%; left: 8%; }
+.b2 { width: 90px; height: 90px; background: #34d399; top: 70%; left: 15%; }
+.b3 { width: 160px; height: 160px; background: #fbbf24; top: 35%; left: 75%; }
+.b4 { width: 110px; height: 110px; background: #f472b6; top: 20%; left: 80%; }
 
 @keyframes float {
-  0%,100% { transform: translateY(0px); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-25px); }
 }
 
-/* NAV */
+/* NAVBAR */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
+  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  padding: 15px 40px;
+  align-items: center;
   background: rgba(255,255,255,0.12);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -56,114 +56,84 @@ nav {
 
 .logo {
   font-weight: 800;
+  font-size: 18px;
 }
 
 .nav-links a {
-  margin-left: 15px;
+  margin-left: 18px;
   text-decoration: none;
   color: white;
-  opacity: 0.8;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+.nav-links a:hover {
+  opacity: 1;
 }
 
 /* HERO */
 .hero {
-  padding-top: 130px;
+  padding-top: 140px;
   text-align: center;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .hero h1 {
-  font-size: 54px;
+  font-size: 52px;
   font-weight: 800;
 }
 
 .hero p {
+  margin-top: 15px;
+  font-size: 18px;
   opacity: 0.9;
-  margin-top: 10px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* XP BAR */
-.xp-box {
-  margin: 25px auto;
-  width: 300px;
-  text-align: left;
-}
-
-.bar {
-  height: 14px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  width: 70%;
-  background: linear-gradient(90deg, #22c55e, #a3e635);
-}
-
-/* BUTTONS */
+/* CTA */
 .btn {
-  margin-top: 20px;
+  margin-top: 25px;
   padding: 14px 28px;
   border-radius: 30px;
   border: none;
-  font-size: 16px;
   cursor: pointer;
-}
-
-.btn-main {
+  font-size: 16px;
   background: #22c55e;
   color: white;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-.btn-main:hover {
+.btn:hover {
   transform: scale(1.05);
 }
 
-/* STATS */
-.stats {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.stat {
-  background: rgba(255,255,255,0.15);
-  padding: 12px 18px;
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-}
-
-/* FEATURE CARD */
-.feature {
-  margin: 50px auto;
-  max-width: 500px;
-  background: rgba(255,255,255,0.15);
-  padding: 25px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
+/* SECTION */
+.section {
+  padding: 80px 40px;
   text-align: center;
 }
 
-.feature h2 {
-  margin-bottom: 10px;
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
 }
 
-/* GRID */
+/* GRID CARDS */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
-  gap: 15px;
-  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
 .card {
   background: rgba(255,255,255,0.15);
   border-radius: 20px;
-  padding: 20px;
-  text-align: center;
+  padding: 25px;
+  backdrop-filter: blur(10px);
   transition: 0.3s;
 }
 
@@ -172,11 +142,32 @@ nav {
   background: rgba(255,255,255,0.25);
 }
 
+.emoji {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+/* INFO BLOCK */
+.info {
+  max-width: 800px;
+  margin: auto;
+  font-size: 18px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
+  padding: 40px;
   opacity: 0.7;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  nav { padding: 15px 20px; }
+  .nav-links { display: none; }
 }
 </style>
 </head>
@@ -189,61 +180,89 @@ footer {
 <div class="ball b3"></div>
 <div class="ball b4"></div>
 
+<!-- NAV -->
 <nav>
   <div class="logo">🇱🇻 LatvianKids</div>
   <div class="nav-links">
     <a href="#">Home</a>
     <a href="#">Lessons</a>
-    <a href="#">Games</a>
+    <a href="#">Profile</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-
-  <h1>Mācies latviešu valodu 🚀</h1>
-  <p>Spēlējies, mācies un kļūsti labāks katru dienu</p>
-
-  <!-- XP -->
-  <div class="xp-box">
-    <p>XP progress</p>
-    <div class="bar">
-      <div class="fill"></div>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">🔥 Streak: 5 dienas</div>
-    <div class="stat">⭐ Level: 3</div>
-    <div class="stat">🏆 XP: 120</div>
-  </div>
-
-  <button class="btn btn-main">Sākt mācīties</button>
+  <h1>Mācies latviešu valodu 🇱🇻</h1>
+  <p>
+    Moderns, spēļu veida mācību platforma bērniem no 2 līdz 10 gadiem.
+    Mācies vārdus, krāsas, dzīvniekus un daudz ko citu — viegli un jautri.
+  </p>
+  <button class="btn">Sākt mācīties 🚀</button>
 </section>
 
-<!-- FEATURED -->
-<div class="feature">
-  <h2>🎯 Šodienas uzdevums</h2>
-  <p>Atpazīsti 5 dzīvniekus latviski un iegūsti XP!</p>
-</div>
+<!-- INFO -->
+<section class="section">
+  <h2>📘 Kas ir LatvianKids?</h2>
+  <div class="info">
+    Šī platforma palīdz bērniem apgūt latviešu valodu caur spēlēm,
+    attēliem un interaktīviem uzdevumiem. Katrs uzdevums ir veidots
+    tā, lai mācīšanās būtu viegla, jautra un motivējoša.
+  </div>
+</section>
 
-<!-- LESSONS -->
-<div class="grid">
+<!-- FEATURES -->
+<section class="section">
+  <h2>✨ Ko tu vari iemācīties</h2>
 
-  <div class="card">🐶 Dzīvnieki</div>
-  <div class="card">🎨 Krāsas</div>
-  <div class="card">🔢 Skaitļi</div>
-  <div class="card">🍎 Ēdiens</div>
+  <div class="grid">
 
-</div>
+    <div class="card">
+      <div class="emoji">🐶</div>
+      <h3>Dzīvnieki</h3>
+      <p>Kaķis, suns, lācis un citi</p>
+    </div>
 
+    <div class="card">
+      <div class="emoji">🎨</div>
+      <h3>Krāsas</h3>
+      <p>Sarkans, zils, zaļš</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔢</div>
+      <h3>Skaitļi</h3>
+      <p>No 1 līdz 10</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍎</div>
+      <h3>Ēdiens</h3>
+      <p>Augļi, dārzeņi un pārtika</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎮</div>
+      <h3>Spēles</h3>
+      <p>Mini uzdevumi un testi</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔊</div>
+      <h3>Klausīšanās</h3>
+      <p>Mācies izrunu</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  Made like Duolingo style but for Latvian kids ❤️
+  Made with ❤️ for kids learning Latvian
 </footer>
 
 <script>
-document.querySelector(".btn-main").addEventListener("click", () => {
-  alert("Let's start your Latvian journey 🚀");
+document.querySelector(".btn").addEventListener("click", () => {
+  alert("Sāksim mācīties latviešu valodu 🚀");
 });
 </script>
 
