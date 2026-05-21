@@ -1,230 +1,156 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="lv">
 <head>
-<meta charset="UTF-8">
-<title>Переводы латышской литературы</title>
-
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Latviešu valoda bērniem</title>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6fb;
-  color: #1a1a1a;
-}
-
-/* ШАПКА (не меняю структуру) */
-.top-menu {
-  background: #2f3e46;
-  padding: 15px 10%;
-}
-
-.top-menu nav {
-  display: flex;
-  gap: 30px;
-}
-
-.top-menu a {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #6ee7ff, #a78bfa);
   color: white;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
+  overflow-x: hidden;
 }
 
-.top-menu a:hover {
-  opacity: 0.7;
+/* HEADER */
+header {
+  text-align: center;
+  padding: 60px 20px 30px;
 }
 
-/* HERO */
-.hero {
-  padding: 120px 10%;
-  background: linear-gradient(135deg, #2f3e46, #52796f);
-  color: white;
+h1 {
+  font-size: 42px;
+  margin: 0;
 }
 
-.hero-text {
-  max-width: 600px;
-}
-
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-}
-
-.hero p {
+p {
   font-size: 18px;
   opacity: 0.9;
 }
 
-.hero-buttons {
-  margin-top: 30px;
-}
-
-.btn-primary,
-.btn-secondary {
-  padding: 12px 25px;
-  border-radius: 30px;
-  text-decoration: none;
-  margin-right: 15px;
-  transition: 0.3s;
+/* BUTTON */
+.btn {
   display: inline-block;
-}
-
-.btn-primary {
-  background: #cad2c5;
-  color: #2f3e46;
-}
-
-.btn-primary:hover {
-  background: white;
-}
-
-.btn-secondary {
-  border: 2px solid white;
+  margin-top: 20px;
+  padding: 15px 30px;
+  background: #22c55e;
   color: white;
-}
-
-.btn-secondary:hover {
-  background: white;
-  color: #2f3e46;
-}
-
-/* FEATURES */
-.features {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  padding: 60px 10%;
-  flex-wrap: wrap;
-}
-
-.feature {
-  font-weight: 500;
+  border-radius: 25px;
   font-size: 18px;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* КОНВЕЙЕР КНИГ */
-.books-section {
-  overflow: hidden;
-  padding: 60px 0;
-  background: #ffffff;
-}
-
-.books-track {
-  display: flex;
-  gap: 30px;
-  width: max-content;
-  animation: scroll 30s linear infinite;
-}
-
-.books-track img {
-  height: 220px;
-  border-radius: 12px;
-  transition: transform 0.3s;
-}
-
-.books-track img:hover {
+.btn:hover {
   transform: scale(1.05);
+  background: #16a34a;
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+/* CARDS */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.card {
+  background: white;
+  color: #333;
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.emoji {
+  font-size: 40px;
+}
+
+/* FLOATING SHAPES */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 6s infinite ease-in-out;
+}
+
+.c1 { width: 120px; height: 120px; background: #fff; top: 10%; left: 10%; }
+.c2 { width: 80px; height: 80px; background: #fff; top: 60%; left: 80%; }
+.c3 { width: 150px; height: 150px; background: #fff; top: 30%; left: 70%; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  background: #2f3e46;
-  color: white;
-}
-
-/* АДАПТИВ */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 32px;
-  }
-
-  .features {
-    gap: 20px;
-  }
-
-  .books-track img {
-    height: 160px;
-  }
+  padding: 20px;
+  font-size: 14px;
+  opacity: 0.8;
 }
 </style>
 </head>
 
 <body>
 
-<header class="top-menu" data-aos="fade-down">
-  <nav>
-    <a href="index.html">Главная</a>
-    <a href="authors.html">Авторы</a>
-    <a href="search.html">Поиск</a>
-    <a href="register.html">Вход / Регистрация</a>
-  </nav>
+<!-- floating decorations -->
+<div class="circle c1"></div>
+<div class="circle c2"></div>
+<div class="circle c3"></div>
+
+<header>
+  <h1>🇱🇻 Mācies latviešu valodu!</h1>
+  <p>Spēlējoties mācies vārdus, krāsas un dzīvniekus</p>
+  <a class="btn" href="#">Sākt mācīties 🚀</a>
 </header>
 
-<main>
+<section class="container">
 
-  <!-- HERO -->
-  <section class="hero" data-aos="fade-up">
-    <div class="hero-text">
-      <h1>Откройте мир латышской литературы</h1>
-      <p>
-        Бесплатная онлайн-библиотека переводов классики и современных авторов.
-        Читайте, вдохновляйтесь и открывайте новые истории.
-      </p>
-      <div class="hero-buttons">
-        <a href="authors.html" class="btn-primary">Смотреть авторов</a>
-        <a href="register.html" class="btn-secondary">Присоединиться</a>
-      </div>
-    </div>
-  </section>
+  <div class="card">
+    <div class="emoji">🐶</div>
+    <h3>Dzīvnieki</h3>
+    <p>Mācies kaķis, suns, lācis un citi</p>
+  </div>
 
-  <!-- ПРЕИМУЩЕСТВА -->
-  <section class="features" data-aos="fade-up">
-    <div class="feature">📚 Бесплатный доступ</div>
-    <div class="feature">🌍 Классика и современность</div>
-    <div class="feature">✨ Удобное чтение</div>
-    <div class="feature">🖋 Новые переводы</div>
-  </section>
+  <div class="card">
+    <div class="emoji">🎨</div>
+    <h3>Krāsas</h3>
+    <p>Sarkans, zils, zaļš un varavīksne</p>
+  </div>
 
-  <!-- КОНВЕЙЕР -->
-  <section class="books-section">
-    <div class="books-track">
-      <img src="images/book1.jpg">
-      <img src="images/book2.jpg">
-      <img src="images/book3.jpg">
-      <img src="images/book4.jpg">
-      <img src="images/book5.jpg">
+  <div class="card">
+    <div class="emoji">🔢</div>
+    <h3>Skaitļi</h3>
+    <p>1 līdz 10 viegli un spēlējoties</p>
+  </div>
 
-      <!-- Дублируем для бесконечности -->
-      <img src="images/book1.jpg">
-      <img src="images/book2.jpg">
-      <img src="images/book3.jpg">
-      <img src="images/book4.jpg">
-      <img src="images/book5.jpg">
-    </div>
-  </section>
+  <div class="card">
+    <div class="emoji">🎮</div>
+    <h3>Spēles</h3>
+    <p>Interaktīvi uzdevumi bērniem</p>
+  </div>
 
-</main>
+</section>
 
-<footer data-aos="fade-up">
-  <p>© Проект переводов латышской литературы</p>
+<footer>
+  Made for kids ❤️ Learn Latvian easy & fun
 </footer>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-AOS.init({ duration: 1000, once: true });
+document.querySelector(".btn").addEventListener("click", function(){
+  alert("Sāksim mācīties! 🚀");
+});
 </script>
 
 </body>
