@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Learn Latvian Kids</title>
+<title>Latvian Kids - Learn Fun</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
@@ -16,127 +16,155 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
   color: white;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
   overflow-x: hidden;
 }
 
-/* NAVBAR */
+/* FLOATING BACKGROUND BALLS */
+.ball {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.2;
+  animation: float 8s infinite ease-in-out;
+  filter: blur(1px);
+}
+
+.b1 { width: 120px; height: 120px; background: white; top: 10%; left: 10%; }
+.b2 { width: 80px; height: 80px; background: #fbbf24; top: 70%; left: 20%; }
+.b3 { width: 160px; height: 160px; background: #34d399; top: 40%; left: 75%; }
+.b4 { width: 100px; height: 100px; background: #f472b6; top: 20%; left: 80%; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-25px); }
+}
+
+/* NAV */
 nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 15px 40px;
+  background: rgba(255,255,255,0.12);
   backdrop-filter: blur(15px);
-  background: rgba(255,255,255,0.1);
   border-bottom: 1px solid rgba(255,255,255,0.2);
-  z-index: 1000;
+  z-index: 999;
 }
 
 .logo {
   font-weight: 800;
-  font-size: 20px;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
 }
 
 .nav-links a {
-  color: white;
+  margin-left: 15px;
   text-decoration: none;
-  font-size: 14px;
-  opacity: 0.9;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  opacity: 1;
-  transform: scale(1.05);
+  color: white;
+  opacity: 0.8;
 }
 
 /* HERO */
 .hero {
-  padding-top: 140px;
+  padding-top: 130px;
   text-align: center;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
 .hero h1 {
-  font-size: 52px;
+  font-size: 54px;
   font-weight: 800;
 }
 
 .hero p {
-  margin-top: 15px;
-  font-size: 18px;
   opacity: 0.9;
+  margin-top: 10px;
 }
 
-.buttons {
-  margin-top: 30px;
+/* XP BAR */
+.xp-box {
+  margin: 25px auto;
+  width: 300px;
+  text-align: left;
 }
 
+.bar {
+  height: 14px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  width: 70%;
+  background: linear-gradient(90deg, #22c55e, #a3e635);
+}
+
+/* BUTTONS */
 .btn {
-  padding: 15px 30px;
+  margin-top: 20px;
+  padding: 14px 28px;
   border-radius: 30px;
   border: none;
-  cursor: pointer;
   font-size: 16px;
-  margin: 5px;
-  transition: 0.3s;
+  cursor: pointer;
 }
 
-.btn-primary {
+.btn-main {
   background: #22c55e;
   color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.btn-primary:hover {
+.btn-main:hover {
   transform: scale(1.05);
-  background: #16a34a;
 }
 
-.btn-secondary {
-  background: rgba(255,255,255,0.2);
-  color: white;
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.stat {
+  background: rgba(255,255,255,0.15);
+  padding: 12px 18px;
+  border-radius: 15px;
   backdrop-filter: blur(10px);
 }
 
-.btn-secondary:hover {
-  transform: scale(1.05);
-}
-
-/* SECTIONS */
-.section {
-  padding: 80px 40px;
+/* FEATURE CARD */
+.feature {
+  margin: 50px auto;
+  max-width: 500px;
+  background: rgba(255,255,255,0.15);
+  padding: 25px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
   text-align: center;
 }
 
-.section h2 {
-  font-size: 32px;
-  margin-bottom: 40px;
+.feature h2 {
+  margin-bottom: 10px;
 }
 
-/* CARDS */
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 15px;
+  padding: 40px;
 }
 
 .card {
   background: rgba(255,255,255,0.15);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 25px;
+  padding: 20px;
+  text-align: center;
   transition: 0.3s;
-  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .card:hover {
@@ -144,142 +172,78 @@ nav {
   background: rgba(255,255,255,0.25);
 }
 
-.card h3 {
-  margin-top: 10px;
-}
-
-.emoji {
-  font-size: 40px;
-}
-
-/* FEATURES */
-.features {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.feature {
-  width: 280px;
-  padding: 20px;
-  background: rgba(255,255,255,0.12);
-  border-radius: 15px;
-  backdrop-filter: blur(10px);
-  transition: 0.3s;
-}
-
-.feature:hover {
-  transform: scale(1.05);
-}
-
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 40px;
-  opacity: 0.8;
-  font-size: 14px;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 36px; }
-  nav { padding: 15px 20px; }
-  .nav-links { display: none; }
+  padding: 30px;
+  opacity: 0.7;
 }
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND BALLS -->
+<div class="ball b1"></div>
+<div class="ball b2"></div>
+<div class="ball b3"></div>
+<div class="ball b4"></div>
+
 <nav>
   <div class="logo">🇱🇻 LatvianKids</div>
   <div class="nav-links">
     <a href="#">Home</a>
-    <a href="#lessons">Lessons</a>
-    <a href="#games">Games</a>
-    <a href="#about">About</a>
+    <a href="#">Lessons</a>
+    <a href="#">Games</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h1>Mācies latviešu valodu 🎉</h1>
-  <p>Moderns, jautrs un spēļu veida mācību veids bērniem 2–10 gadiem</p>
 
-  <div class="buttons">
-    <button class="btn btn-primary">Sākt mācīties 🚀</button>
-    <button class="btn btn-secondary">Skatīt demo</button>
+  <h1>Mācies latviešu valodu 🚀</h1>
+  <p>Spēlējies, mācies un kļūsti labāks katru dienu</p>
+
+  <!-- XP -->
+  <div class="xp-box">
+    <p>XP progress</p>
+    <div class="bar">
+      <div class="fill"></div>
+    </div>
   </div>
-</section>
 
-<section class="section" id="lessons">
-  <h2>📚 Mācību tēmas</h2>
-  <div class="grid">
-
-    <div class="card">
-      <div class="emoji">🐶</div>
-      <h3>Dzīvnieki</h3>
-      <p>Kaķis, suns, putni un vairāk</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🎨</div>
-      <h3>Krāsas</h3>
-      <p>Sarkans, zils, zaļš</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🔢</div>
-      <h3>Skaitļi</h3>
-      <p>No 1 līdz 10</p>
-    </div>
-
-    <div class="card">
-      <div class="emoji">🍎</div>
-      <h3>Pārtika</h3>
-      <p>Augļi un dārzeņi</p>
-    </div>
-
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">🔥 Streak: 5 dienas</div>
+    <div class="stat">⭐ Level: 3</div>
+    <div class="stat">🏆 XP: 120</div>
   </div>
+
+  <button class="btn btn-main">Sākt mācīties</button>
 </section>
 
-<section class="section" id="games">
-  <h2>🎮 Spēles</h2>
-  <div class="features">
+<!-- FEATURED -->
+<div class="feature">
+  <h2>🎯 Šodienas uzdevums</h2>
+  <p>Atpazīsti 5 dzīvniekus latviski un iegūsti XP!</p>
+</div>
 
-    <div class="feature">
-      <h3>Mini Quiz</h3>
-      <p>Atmini vārdu ar attēlu</p>
-    </div>
+<!-- LESSONS -->
+<div class="grid">
 
-    <div class="feature">
-      <h3>Atmiņas spēle</h3>
-      <p>Savieno kartītes</p>
-    </div>
+  <div class="card">🐶 Dzīvnieki</div>
+  <div class="card">🎨 Krāsas</div>
+  <div class="card">🔢 Skaitļi</div>
+  <div class="card">🍎 Ēdiens</div>
 
-    <div class="feature">
-      <h3>Balss mācība</h3>
-      <p>Klausies un atkārto</p>
-    </div>
-
-  </div>
-</section>
-
-<section class="section" id="about">
-  <h2>⭐ Par mums</h2>
-  <p style="max-width:700px;margin:auto;opacity:0.9;">
-    Šī platforma palīdz bērniem viegli un jautri iemācīties latviešu valodu
-    ar spēlēm, krāsām un interaktīviem uzdevumiem.
-  </p>
-</section>
+</div>
 
 <footer>
-  Made with ❤️ for kids learning Latvian
+  Made like Duolingo style but for Latvian kids ❤️
 </footer>
 
 <script>
-document.querySelector(".btn-primary").addEventListener("click", () => {
-  alert("Welcome! Let's start learning Latvian 🚀");
+document.querySelector(".btn-main").addEventListener("click", () => {
+  alert("Let's start your Latvian journey 🚀");
 });
 </script>
 
