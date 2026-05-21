@@ -3,153 +3,283 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Latviešu valoda bērniem</title>
+<title>Learn Latvian Kids</title>
 
 <style>
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
   color: white;
   overflow-x: hidden;
 }
 
-/* HEADER */
-header {
+/* NAVBAR */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* HERO */
+.hero {
+  padding-top: 140px;
   text-align: center;
-  padding: 60px 20px 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-h1 {
-  font-size: 42px;
-  margin: 0;
+.hero h1 {
+  font-size: 52px;
+  font-weight: 800;
 }
 
-p {
+.hero p {
+  margin-top: 15px;
   font-size: 18px;
   opacity: 0.9;
 }
 
-/* BUTTON */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 15px 30px;
-  background: #22c55e;
-  color: white;
-  border-radius: 25px;
-  font-size: 18px;
-  text-decoration: none;
-  transition: 0.3s;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+.buttons {
+  margin-top: 30px;
 }
 
-.btn:hover {
+.btn {
+  padding: 15px 30px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 5px;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: #22c55e;
+  color: white;
+}
+
+.btn-primary:hover {
   transform: scale(1.05);
   background: #16a34a;
 }
 
+.btn-secondary {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05);
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
 /* CARDS */
-.container {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 40px;
 }
 
 .card {
-  background: white;
-  color: #333;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 25px;
   transition: 0.3s;
+  border: 1px solid rgba(255,255,255,0.2);
 }
 
 .card:hover {
   transform: translateY(-10px);
+  background: rgba(255,255,255,0.25);
+}
+
+.card h3 {
+  margin-top: 10px;
 }
 
 .emoji {
   font-size: 40px;
 }
 
-/* FLOATING SHAPES */
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.2;
-  animation: float 6s infinite ease-in-out;
+/* FEATURES */
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.c1 { width: 120px; height: 120px; background: #fff; top: 10%; left: 10%; }
-.c2 { width: 80px; height: 80px; background: #fff; top: 60%; left: 80%; }
-.c3 { width: 150px; height: 150px; background: #fff; top: 30%; left: 70%; }
+.feature {
+  width: 280px;
+  padding: 20px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: 0.3s;
+}
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+.feature:hover {
+  transform: scale(1.05);
 }
 
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 20px;
-  font-size: 14px;
+  padding: 40px;
   opacity: 0.8;
+  font-size: 14px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  nav { padding: 15px 20px; }
+  .nav-links { display: none; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- floating decorations -->
-<div class="circle c1"></div>
-<div class="circle c2"></div>
-<div class="circle c3"></div>
-
-<header>
-  <h1>🇱🇻 Mācies latviešu valodu!</h1>
-  <p>Spēlējoties mācies vārdus, krāsas un dzīvniekus</p>
-  <a class="btn" href="#">Sākt mācīties 🚀</a>
-</header>
-
-<section class="container">
-
-  <div class="card">
-    <div class="emoji">🐶</div>
-    <h3>Dzīvnieki</h3>
-    <p>Mācies kaķis, suns, lācis un citi</p>
+<nav>
+  <div class="logo">🇱🇻 LatvianKids</div>
+  <div class="nav-links">
+    <a href="#">Home</a>
+    <a href="#lessons">Lessons</a>
+    <a href="#games">Games</a>
+    <a href="#about">About</a>
   </div>
+</nav>
 
-  <div class="card">
-    <div class="emoji">🎨</div>
-    <h3>Krāsas</h3>
-    <p>Sarkans, zils, zaļš un varavīksne</p>
+<section class="hero">
+  <h1>Mācies latviešu valodu 🎉</h1>
+  <p>Moderns, jautrs un spēļu veida mācību veids bērniem 2–10 gadiem</p>
+
+  <div class="buttons">
+    <button class="btn btn-primary">Sākt mācīties 🚀</button>
+    <button class="btn btn-secondary">Skatīt demo</button>
   </div>
+</section>
 
-  <div class="card">
-    <div class="emoji">🔢</div>
-    <h3>Skaitļi</h3>
-    <p>1 līdz 10 viegli un spēlējoties</p>
+<section class="section" id="lessons">
+  <h2>📚 Mācību tēmas</h2>
+  <div class="grid">
+
+    <div class="card">
+      <div class="emoji">🐶</div>
+      <h3>Dzīvnieki</h3>
+      <p>Kaķis, suns, putni un vairāk</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🎨</div>
+      <h3>Krāsas</h3>
+      <p>Sarkans, zils, zaļš</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🔢</div>
+      <h3>Skaitļi</h3>
+      <p>No 1 līdz 10</p>
+    </div>
+
+    <div class="card">
+      <div class="emoji">🍎</div>
+      <h3>Pārtika</h3>
+      <p>Augļi un dārzeņi</p>
+    </div>
+
   </div>
+</section>
 
-  <div class="card">
-    <div class="emoji">🎮</div>
-    <h3>Spēles</h3>
-    <p>Interaktīvi uzdevumi bērniem</p>
+<section class="section" id="games">
+  <h2>🎮 Spēles</h2>
+  <div class="features">
+
+    <div class="feature">
+      <h3>Mini Quiz</h3>
+      <p>Atmini vārdu ar attēlu</p>
+    </div>
+
+    <div class="feature">
+      <h3>Atmiņas spēle</h3>
+      <p>Savieno kartītes</p>
+    </div>
+
+    <div class="feature">
+      <h3>Balss mācība</h3>
+      <p>Klausies un atkārto</p>
+    </div>
+
   </div>
+</section>
 
+<section class="section" id="about">
+  <h2>⭐ Par mums</h2>
+  <p style="max-width:700px;margin:auto;opacity:0.9;">
+    Šī platforma palīdz bērniem viegli un jautri iemācīties latviešu valodu
+    ar spēlēm, krāsām un interaktīviem uzdevumiem.
+  </p>
 </section>
 
 <footer>
-  Made for kids ❤️ Learn Latvian easy & fun
+  Made with ❤️ for kids learning Latvian
 </footer>
 
 <script>
-document.querySelector(".btn").addEventListener("click", function(){
-  alert("Sāksim mācīties! 🚀");
+document.querySelector(".btn-primary").addEventListener("click", () => {
+  alert("Welcome! Let's start learning Latvian 🚀");
 });
 </script>
 
