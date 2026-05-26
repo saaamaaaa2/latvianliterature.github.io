@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="lv">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LatvianKids</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -17,46 +17,66 @@ box-sizing:border-box;
 
 body{
 font-family:'Nunito',sans-serif;
-background:#58cc02;
 overflow-x:hidden;
-color:white;
+background:#58CC02;
 }
 
 /* NAVBAR */
 
 nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-position:fixed;
-width:100%;
-top:0;
+padding:22px 70px;
+background:#58CC02;
 z-index:1000;
-background:rgba(88,204,2,0.95);
 }
 
 .logo{
-font-size:34px;
-font-weight:800;
+font-size:36px;
+font-weight:900;
+color:white;
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.logo span{
+font-size:42px;
 }
 
 .nav-links{
 display:flex;
-gap:35px;
+gap:40px;
 }
 
 .nav-links a{
-color:white;
 text-decoration:none;
-font-weight:700;
+color:white;
 font-size:18px;
-transition:0.3s;
+font-weight:800;
+transition:0.2s;
 }
 
 .nav-links a:hover{
-transform:translateY(-2px);
 opacity:0.8;
+transform:translateY(-2px);
+}
+
+.login-btn{
+background:#7EE000;
+border:none;
+padding:14px 28px;
+border-radius:18px;
+font-size:17px;
+font-weight:900;
+color:white;
+cursor:pointer;
+box-shadow:0 5px 0 #46A302;
 }
 
 /* HERO */
@@ -66,17 +86,17 @@ min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-padding:120px 80px 60px;
+padding:150px 70px 120px;
 position:relative;
 }
 
 .hero-content{
+max-width:1400px;
+width:100%;
 display:flex;
 align-items:center;
 justify-content:space-between;
 gap:50px;
-width:100%;
-max-width:1400px;
 }
 
 .left{
@@ -84,76 +104,57 @@ flex:1;
 }
 
 .left h1{
-font-size:78px;
-line-height:1;
-font-weight:800;
-margin-bottom:25px;
-}
-
-.left p{
-font-size:24px;
-max-width:650px;
-line-height:1.5;
+font-size:88px;
+line-height:0.95;
+font-weight:900;
+color:white;
 margin-bottom:35px;
 }
 
-.buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:18px 38px;
-border:none;
-border-radius:20px;
-font-size:20px;
-font-weight:800;
-cursor:pointer;
-transition:0.3s;
-}
-
-.btn-primary{
-background:white;
-color:#58cc02;
-box-shadow:0 6px 0 #d7d7d7;
-}
-
-.btn-primary:hover{
-transform:translateY(-3px);
-}
-
-.btn-secondary{
-background:#46a302;
+.left p{
+font-size:30px;
+line-height:1.5;
+max-width:620px;
 color:white;
-box-shadow:0 6px 0 #398602;
+margin-bottom:40px;
 }
 
-.btn-secondary:hover{
-transform:translateY(-3px);
+.main-btn{
+background:white;
+color:#58CC02;
+padding:22px 44px;
+border:none;
+border-radius:22px;
+font-size:24px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 8px 0 #d7d7d7;
+transition:0.2s;
+}
+
+.main-btn:hover{
+transform:translateY(-4px);
 }
 
 /* OWL */
 
-.owl{
+.right{
 flex:1;
 display:flex;
 justify-content:center;
-align-items:center;
-position:relative;
 }
 
-.owl-circle{
-width:420px;
-height:420px;
-background:#7be52d;
+.owl{
+width:470px;
+height:470px;
 border-radius:50%;
+background:#7EE000;
 display:flex;
-justify-content:center;
 align-items:center;
-font-size:180px;
-box-shadow:0 0 80px rgba(255,255,255,0.2);
+justify-content:center;
+font-size:220px;
 animation:float 4s ease-in-out infinite;
+box-shadow:0 0 80px rgba(255,255,255,0.2);
 }
 
 @keyframes float{
@@ -165,11 +166,44 @@ transform:translateY(-20px);
 }
 }
 
+/* BALLS */
+
+.ball{
+position:absolute;
+border-radius:50%;
+opacity:0.2;
+animation:float 7s ease-in-out infinite;
+}
+
+.b1{
+width:140px;
+height:140px;
+background:#ffd93d;
+top:180px;
+left:-40px;
+}
+
+.b2{
+width:90px;
+height:90px;
+background:#00c2ff;
+top:300px;
+right:120px;
+}
+
+.b3{
+width:120px;
+height:120px;
+background:#ff6fae;
+bottom:140px;
+left:120px;
+}
+
 /* WAVE */
 
 .wave{
 position:absolute;
-bottom:-5px;
+bottom:-2px;
 left:0;
 width:100%;
 }
@@ -177,114 +211,127 @@ width:100%;
 .wave svg{
 display:block;
 width:100%;
-height:160px;
+height:170px;
 }
 
-/* SECTION */
+/* WHITE SECTION */
 
-.section{
+.content{
 background:white;
-color:#3c3c3c;
-padding:100px 60px;
+padding:120px 70px;
+border-top-left-radius:50px;
+border-top-right-radius:50px;
 }
 
-.section h2{
+.content-title{
 text-align:center;
-font-size:54px;
-margin-bottom:60px;
-color:#58cc02;
+font-size:68px;
+font-weight:900;
+color:#58CC02;
+margin-bottom:30px;
+line-height:1.1;
 }
 
-/* CARDS */
+.start-center{
+display:flex;
+justify-content:center;
+margin-bottom:90px;
+}
 
-.grid{
+/* INFO BLOCKS */
+
+.info-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-max-width:1400px;
+grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+gap:35px;
+max-width:1500px;
 margin:auto;
 }
 
-.card{
+.info-card{
 background:#f7f7f7;
-border-radius:30px;
-padding:40px;
-text-align:center;
-transition:0.3s;
+border-radius:40px;
+padding:50px;
+transition:0.25s;
 border:4px solid #ececec;
 }
 
-.card:hover{
+.info-card:hover{
 transform:translateY(-10px);
 }
 
-.card .emoji{
-font-size:70px;
+.info-icon{
+font-size:75px;
+margin-bottom:25px;
+}
+
+.info-card h3{
+font-size:42px;
+line-height:1.2;
+color:#58CC02;
+margin-bottom:25px;
+font-weight:900;
+}
+
+.info-card p{
+font-size:24px;
+line-height:1.8;
+color:#666;
+}
+
+/* FOOTER CTA */
+
+.big-cta{
+margin-top:120px;
+background:#58CC02;
+border-radius:45px;
+padding:80px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:40px;
+flex-wrap:wrap;
+}
+
+.big-cta h2{
+font-size:58px;
+color:white;
+font-weight:900;
 margin-bottom:20px;
 }
 
-.card h3{
-font-size:30px;
-margin-bottom:15px;
+.big-cta p{
+font-size:26px;
+color:white;
+max-width:700px;
+line-height:1.6;
 }
 
-.card p{
+.big-cta button{
+background:white;
+color:#58CC02;
+padding:22px 42px;
+border:none;
+border-radius:22px;
+font-size:24px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 8px 0 #d7d7d7;
+}
+
+/* FOOTER */
+
+footer{
+padding:40px;
+background:white;
+text-align:center;
 font-size:18px;
-line-height:1.5;
-}
-
-/* WHY */
-
-.why{
-margin-top:100px;
-}
-
-.features{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:25px;
-max-width:1300px;
-margin:auto;
-}
-
-.feature{
-background:#f7f7f7;
-padding:35px;
-border-radius:25px;
-text-align:center;
-}
-
-.feature span{
-font-size:55px;
-display:block;
-margin-bottom:15px;
-}
-
-/* CTA */
-
-.cta{
-margin-top:100px;
-background:#58cc02;
-padding:70px;
-border-radius:40px;
-text-align:center;
-color:white;
-}
-
-.cta h2{
-font-size:56px;
-margin-bottom:20px;
-color:white;
-}
-
-.cta p{
-font-size:22px;
-margin-bottom:30px;
+color:#777;
 }
 
 /* MOBILE */
 
-@media(max-width:900px){
+@media(max-width:1000px){
 
 .hero-content{
 flex-direction:column;
@@ -292,17 +339,17 @@ text-align:center;
 }
 
 .left h1{
-font-size:52px;
+font-size:58px;
 }
 
 .left p{
-font-size:20px;
+font-size:22px;
 }
 
-.owl-circle{
-width:280px;
-height:280px;
-font-size:120px;
+.owl{
+width:300px;
+height:300px;
+font-size:150px;
 }
 
 nav{
@@ -313,8 +360,38 @@ padding:20px;
 display:none;
 }
 
-.section{
-padding:80px 25px;
+.content{
+padding:90px 25px;
+}
+
+.content-title{
+font-size:46px;
+}
+
+.info-grid{
+grid-template-columns:1fr;
+}
+
+.info-card{
+padding:35px;
+}
+
+.info-card h3{
+font-size:32px;
+}
+
+.info-card p{
+font-size:20px;
+}
+
+.big-cta{
+padding:45px;
+justify-content:center;
+text-align:center;
+}
+
+.big-cta h2{
+font-size:40px;
 }
 
 }
@@ -324,38 +401,63 @@ padding:80px 25px;
 
 <body>
 
+<!-- BALLS -->
+
+<div class="ball b1"></div>
+<div class="ball b2"></div>
+<div class="ball b3"></div>
+
+<!-- NAVBAR -->
+
 <nav>
-<div class="logo">🇱🇻 LatvianKids</div>
+
+<div class="logo">
+<span>🦉</span>
+LatvianKids
+</div>
 
 <div class="nav-links">
 <a href="#">Home</a>
 <a href="#">Lessons</a>
 <a href="#">Profile</a>
 </div>
+
+<button class="login-btn">
+Начать
+</button>
+
 </nav>
+
+<!-- HERO -->
 
 <section class="hero">
 
 <div class="hero-content">
 
 <div class="left">
-<h1>Mācies latviešu valodu jautri 🇱🇻</h1>
+
+<h1>
+Учите языки бесплатно,
+весело и эффективно!
+</h1>
 
 <p>
-Spēļu veida platforma bērniem no 2 līdz 10 gadiem.
-Mācies vārdus, krāsas, dzīvniekus un daudz ko citu.
+Игровое обучение для детей с современным подходом,
+красочным интерфейсом и короткими уроками.
 </p>
 
-<div class="buttons">
-<button class="btn btn-primary">Sākt mācīties</button>
-<button class="btn btn-secondary">Demo</button>
-</div>
+<button class="main-btn">
+Начать
+</button>
+
 </div>
 
+<div class="right">
+
 <div class="owl">
-<div class="owl-circle">
 🦉
 </div>
+
 </div>
 
 </div>
@@ -371,99 +473,120 @@ d="M0,224L80,224C160,224,320,224,480,208C640,192,800,160,960,176C1120,192,1280,2
 
 </section>
 
-<section class="section">
+<!-- CONTENT -->
 
-<h2>Ko tu vari iemācīties?</h2>
+<section class="content">
 
-<div class="grid">
+<h2 class="content-title">
+Бесплатно. Весело. Эффективно.
+</h2>
 
-<div class="card">
-<div class="emoji">🐶</div>
-<h3>Dzīvnieki</h3>
-<p>Mācies dzīvnieku nosaukumus latviski.</p>
+<div class="start-center">
+<button class="main-btn">
+Начать
+</button>
 </div>
 
-<div class="card">
-<div class="emoji">🎨</div>
-<h3>Krāsas</h3>
-<p>Atpazīsti un mācies krāsas spēlējoties.</p>
-</div>
+<div class="info-grid">
 
-<div class="card">
-<div class="emoji">🔢</div>
-<h3>Skaitļi</h3>
-<p>Mācies ciparus no 1 līdz 10.</p>
-</div>
+<div class="info-card">
 
-<div class="card">
-<div class="emoji">🍎</div>
-<h3>Ēdiens</h3>
-<p>Augļi, dārzeņi un ēdiens latviešu valodā.</p>
-</div>
+<div class="info-icon">🎮</div>
 
-<div class="card">
-<div class="emoji">🎮</div>
-<h3>Spēles</h3>
-<p>Mini spēles un interaktīvi uzdevumi.</p>
-</div>
-
-<div class="card">
-<div class="emoji">🔊</div>
-<h3>Klausīšanās</h3>
-<p>Klausies vārdus un atkārto izrunu.</p>
-</div>
-
-</div>
-
-<div class="why">
-
-<h2>Kāpēc bērniem patīk LatvianKids?</h2>
-
-<div class="features">
-
-<div class="feature">
-<span>⭐</span>
-<h3>Jautri</h3>
-<p>Mācīšanās kā spēle.</p>
-</div>
-
-<div class="feature">
-<span>🧠</span>
-<h3>Gudri</h3>
-<p>Attīsta atmiņu un valodu.</p>
-</div>
-
-<div class="feature">
-<span>🎯</span>
-<h3>Vienkārši</h3>
-<p>Piemērots bērniem 2–10 gadiem.</p>
-</div>
-
-<div class="feature">
-<span>🚀</span>
-<h3>Moderni</h3>
-<p>Krāsains un mūsdienīgs dizains.</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="cta">
-
-<h2>Sāc mācīties jau šodien 🚀</h2>
+<h3>
+Бесплатно. Весело. Эффективно.
+</h3>
 
 <p>
-Padari latviešu valodu jautru un vieglu bērnam.
+Учиться с LatvianKids весело и интересно.
+Зарабатывайте очки за правильные ответы,
+открывайте новые материалы и развивайте навыки разговорной речи.
+Наши короткие уроки действительно работают,
+и мы можем это доказать.
 </p>
 
-<button class="btn btn-primary">
-Sākt tagad
+</div>
+
+<div class="info-card">
+
+<div class="info-icon">🧠</div>
+
+<h3>
+Научный подход
+</h3>
+
+<p>
+Уникальный метод обучения и увлекательные материалы:
+исследования показывают, что наши курсы эффективно
+развивают навыки чтения, письма, понимания на слух
+и устной речи.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<div class="info-icon">🔥</div>
+
+<h3>
+Стимул к учёбе
+</h3>
+
+<p>
+Игровой подход с забавными заданиями и напоминаниями
+от нашего талисмана помогает быстро превратить
+ежедневные занятия в привычку.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<div class="info-icon">🚀</div>
+
+<h3>
+Индивидуальное обучение
+</h3>
+
+<p>
+Наши уроки объединяют в себе умные алгоритмы
+искусственного интеллекта и современные достижения
+лингвистики. Сложность и темп обучения подбираются
+для каждого пользователя индивидуально.
+</p>
+
+</div>
+
+</div>
+
+<!-- CTA -->
+
+<div class="big-cta">
+
+<div>
+
+<h2>
+Начните учиться уже сегодня 🚀
+</h2>
+
+<p>
+Современное обучение языкам для детей.
+Весело, ярко и эффективно.
+</p>
+
+</div>
+
+<button>
+Начать
 </button>
 
 </div>
 
 </section>
+
+<footer>
+LatvianKids © 2026
+</footer>
 
 </body>
 </html>
